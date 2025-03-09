@@ -11,7 +11,7 @@ export default function Home() {
   const { fetchWeather, fetchWeatherUsingCoords } = WeatherServices;
   const [weatherData, setWeatherData] = useState<Weather>({ location: '', temperature: 0, condition: '', is_day: false });
   const [search, setSearch] = useState('');
-  const [day, setDay] = useState(true);
+  const [day, setDay] = useState(false);
   
   useEffect(() => {
     const getCurrentLocation = () => {
@@ -50,7 +50,7 @@ export default function Home() {
         </div>
       </nav>
       <div className="top-0">
-        <div className="">
+        <div>
           {<Card temperature={weatherData.temperature} location={weatherData.location} is_day={weatherData.is_day} condition={weatherData.condition} /> }
         </div >
       </div>
