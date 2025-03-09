@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import ReactAnimatedWeather from 'react-animated-weather';
-
+    
 interface InputProps {
     temperature: number;
     location: string;
