@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import { useEffect, useState } from 'react';
 import ReactAnimatedWeather from 'react-animated-weather';
     
 interface InputProps {
@@ -30,20 +31,22 @@ const getWeatherIcon = (condition: string, is_day: boolean) => {
     return 'CLOUDY'; 
 };
 
-const getIconSize = () => {
-    if (window.innerWidth >= 1024) return 170; 
-    if (window.innerWidth >= 768) return 160; 
-    if (window.innerWidth >= 640) return 150; 
-    if (window.innerWidth >= 400) return 130;
-    return 110; 
-};
-
-
-export const Card = ({temperature, location, is_day, condition}: InputProps) => {
+export const Card = ({ temperature, location, is_day, condition }: InputProps) => {
     const icon = getWeatherIcon(condition, is_day);
-    const [iconSize, setIconSize] = React.useState(getIconSize());
+    const [iconSize, setIconSize] = useState(110); 
 
-    React.useEffect(() => {
+    useEffect(() => {
+
+        const getIconSize = () => {
+            if (window.innerWidth >= 1024) return 170;
+            if (window.innerWidth >= 768) return 160;
+            if (window.innerWidth >= 640) return 150;
+            if (window.innerWidth >= 400) return 130;
+            return 110;
+        };
+
+        setIconSize(getIconSize());
+
         const handleResize = () => {
             setIconSize(getIconSize());
         };
@@ -53,6 +56,7 @@ export const Card = ({temperature, location, is_day, condition}: InputProps) => 
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
     return (
         <article className="absolute w-full h-full relative isolate flex flex-col justify-end 
             overflow-hidden rounded-2xl px-6 pb-6 pt-32 sm:pt-40 
