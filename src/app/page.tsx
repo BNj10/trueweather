@@ -1,3 +1,5 @@
+"use client"
+
 import { Footer } from "../components/ui/footer/footer";
 import { Card } from "../components/ui/card/card";
 import WeatherServices from "../features/weather/services/get-weather";
