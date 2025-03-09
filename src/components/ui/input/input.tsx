@@ -18,7 +18,7 @@ export const Input = ({ search, setSearch, onSearch }: InputProps) => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="City, or Town + Province, State, or Country"
-                className="w-full h-15 rounded-md border-gray-200 py-2.5 pe-10 shadow-xs px-3 bg-black text-white"
+                className="w-full h-15 rounded-md border-gray-200 py-2.5 pe-10 shadow-xs px-3 bg-white text-black placeholder-gray-400"
             />
 
             <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
