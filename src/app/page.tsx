@@ -54,7 +54,7 @@ export default function Home() {
         setDay(weather.is_day);
       }
       catch (error) {
-        setError("City not found. Please check the spelling and try again.");
+        setError("Location not found. Please check the spelling and try again.");
         console.error("Error fetching weather data:", error);
       }
       
