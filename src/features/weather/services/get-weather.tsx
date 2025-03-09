@@ -1,3 +1,4 @@
+
 const fetchWeather = async (city : string) => {
     if (!process.env.NEXT_PUBLIC_APP_BASE_URL) {
         console.error("REACT_BASE_URL is not defined.");
@@ -11,15 +12,7 @@ const fetchWeather = async (city : string) => {
 
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BASE_URL}/current.json?key=${process.env.NEXT_PUBLIC_APP_API_KEY}&q=${city}`);
-        if (!response.ok) {
-            throw new Error(`Error fetching city data: ${response.statusText}`);
-        }
-
         const data = await response.json();
-
-        if (!data || data.length === 0) {
-            throw new Error('No data found for the specified city');
-        }
 
         return {
             temperature: data.current.temp_c,
@@ -29,8 +22,7 @@ const fetchWeather = async (city : string) => {
         };
     } 
     catch (error) {
-            console.error('Error fetching city data:', error);
-            throw error;
+        throw error;
     }
 };
 
