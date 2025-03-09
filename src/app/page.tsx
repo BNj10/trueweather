@@ -1,5 +1,3 @@
-"use client";
-
 import { Footer } from "../components/ui/footer/footer";
 import { Card } from "../components/ui/card/card";
 import WeatherServices from "../features/weather/services/get-weather";
@@ -19,7 +17,6 @@ export default function Home() {
         navigator.geolocation.getCurrentPosition(async (position) => {
           const { latitude, longitude } = position.coords;
           const weatherData = await fetchWeatherUsingCoords(latitude, longitude);
-          console.log(latitude, longitude);
           setWeatherData(weatherData);
           setDay(weatherData.is_day);
         }, (error) => {
@@ -32,7 +29,7 @@ export default function Home() {
       }
     };
     getCurrentLocation();
-  }, []);
+  }, [fetchWeatherUsingCoords]);
   
   const handleSearch = async () => {
     if (search) {
